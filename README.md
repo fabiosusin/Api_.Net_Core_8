@@ -1,7 +1,3 @@
-Perfeito, aqui está o README atualizado com essas informações:
-
----
-
 # Streamberry Movie Archive Management System
 
 ## Contexto
