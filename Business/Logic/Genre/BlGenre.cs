@@ -33,7 +33,7 @@ public class BlGenre : IBlGenre
     {
         var existingName = _genreDAO.FindByName(name);
         if (existingName != null)
-            return new BaseApiOutput("Já existe um Gênero com este nome!");
+            return new("Já existe um Gênero com este nome!");
 
         return _genreDAO.Insert(new Genre(name));
     }
@@ -47,11 +47,11 @@ public class BlGenre : IBlGenre
     {
         var genre = _genreDAO.FindById(id);
         if (genre == null)
-            return new BaseApiOutput("Gênero não encontrado!");
+            return new("Gênero não encontrado!");
 
         var movie = _movieDAO.FindOne(x => x.GenreId == id);
         if (movie != null)
-            return new BaseApiOutput("Existem filmes vinculados a este Gênero!");
+            return new("Existem filmes vinculados a este Gênero!");
 
         return _genreDAO.RemoveById(id);
     }
@@ -72,7 +72,7 @@ public class BlGenre : IBlGenre
     {
         var result = _genreDAO.List(input);
         if (!(result?.Items?.Any() ?? false))
-            return new BaseListOutput<Genre>("Nenhum Gênero encontrado!");
+            return new("Nenhum Gênero encontrado!");
 
         return result;
     }
@@ -87,7 +87,7 @@ public class BlGenre : IBlGenre
     {
         var genre = _genreDAO.FindById(id);
         if (genre == null)
-            return new BaseApiOutput("Gênero não encontrado!");
+            return new("Gênero não encontrado!");
 
         genre.Name = name;
         return _genreDAO.Update(genre);
